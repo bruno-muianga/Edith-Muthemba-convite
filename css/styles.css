@@ -1,0 +1,1729 @@
+/* ==========================================================================
+   CONVITE DIGITAL DE GRADUAÇÃO — FOLHA DE ESTILOS EDITORIAL DE LUXO
+   Página Única Contínua (Sem Abas) • Fundo Claro e Luminoso • Formato de Convite
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. VARIÁVEIS DE CORES E DESIGN SYSTEM (PALETA CLARA E LUMINOSA)
+   -------------------------------------------------------------------------- */
+:root {
+  /* Paleta Oficial do Prompt */
+  --color-rose-soft: #DDA1B5;
+  --color-rose-light: #F5E8EC;
+  --color-white: #FFFFFF;
+  --color-champagne: #E8D8BE;
+  --color-champagne-light: #FBF8F3;
+  --color-gold: #B99A68;
+  --color-gold-light: #DFCA9B;
+  --color-gray-subtle: #888080;
+  --color-text-dark: #252124;
+
+  /* Fundo Claro Obrigatório em Toda a Experiência */
+  --bg-page: #FAF7F2;                /* Marfim suave e quente */
+  --bg-surface: #FFFFFF;             /* Papel cartão branco nobre */
+  --bg-surface-elevated: #FFFDFC;
+  --bg-surface-translucent: rgba(255, 253, 250, 0.95);
+  --bg-hero: #F7EFE8;                /* Tom creme de envelope clássico */
+  --bg-card: #FFFFFF;
+  --bg-pill: #F6ECEF;                /* Rosa pó muito claro */
+  --border-delicate: rgba(221, 161, 181, 0.35);
+  --border-gold: rgba(185, 154, 104, 0.45);
+  --border-subtle: rgba(185, 154, 104, 0.2);
+
+  --text-primary: #252124;
+  --text-secondary: #706868;
+  --text-accent: #B99A68;
+  --text-highlight: #9E743A;
+  --text-on-dark: #FFFFFF;
+
+  --shadow-envelope: 0 25px 60px -12px rgba(185, 154, 104, 0.22), 0 12px 28px -6px rgba(37, 33, 36, 0.08);
+  --shadow-editorial: 0 6px 24px -2px rgba(185, 154, 104, 0.08), 0 2px 8px -1px rgba(37, 33, 36, 0.03);
+  --shadow-floating: 0 10px 30px -5px rgba(185, 154, 104, 0.2), 0 4px 10px -2px rgba(37, 33, 36, 0.04);
+  --shadow-wax: 0 6px 16px rgba(158, 116, 58, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.4), inset 0 -2px 4px rgba(0, 0, 0, 0.25);
+
+  /* Tipografias */
+  --font-script: 'Great Vibes', cursive;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Transições */
+  --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: all 0.2s ease;
+}
+
+/* --------------------------------------------------------------------------
+   2. RESET & BASE
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  font-size: 16px;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-page);
+  background-image: 
+    radial-gradient(circle at 15% 15%, rgba(221, 161, 181, 0.06) 0%, transparent 40%),
+    radial-gradient(circle at 85% 85%, rgba(232, 216, 190, 0.08) 0%, transparent 40%);
+  color: var(--text-primary);
+  line-height: 1.65;
+  overflow-x: hidden;
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body.scroll-locked {
+  overflow: hidden;
+  height: 100vh;
+  touch-action: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button, a, input, select, textarea {
+  font-family: inherit;
+  color: inherit;
+}
+
+a {
+  text-decoration: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+/* --------------------------------------------------------------------------
+   3. TIPOGRAFIA EDITORIAL
+   -------------------------------------------------------------------------- */
+.font-script { font-family: var(--font-script); }
+.font-serif { font-family: var(--font-serif); }
+.font-sans { font-family: var(--font-sans); }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+}
+
+.section-label {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--color-rose-soft);
+  margin-bottom: 0.6rem;
+  display: inline-block;
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.85rem, 5vw, 2.6rem);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.25;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.section-subtitle {
+  font-family: var(--font-serif);
+  font-size: clamp(1.05rem, 2.5vw, 1.22rem);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  max-width: 580px;
+  margin: 0 auto 2rem;
+}
+
+.text-gold-highlight {
+  color: var(--text-accent);
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   4. LAYOUT & CONTAINERS (PÁGINA ÚNICA COM SCROLL CONTÍNUO)
+   -------------------------------------------------------------------------- */
+.editorial-container {
+  width: 100%;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1.25rem, 5vw, 2.5rem);
+  padding-right: clamp(1.25rem, 5vw, 2.5rem);
+}
+
+.editorial-section {
+  position: relative;
+  padding-top: clamp(4rem, 8vw, 6rem);
+  padding-bottom: clamp(4rem, 8vw, 6rem);
+  text-align: center;
+}
+
+.editorial-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1.75rem auto;
+  max-width: 220px;
+}
+
+.editorial-divider::before,
+.editorial-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border-gold), transparent);
+}
+
+.editorial-divider svg {
+  color: var(--color-gold);
+  opacity: 0.85;
+}
+
+/* --------------------------------------------------------------------------
+   5. CAPA / FORMATO REAL DO FECHO DO CONVITE (BRANCO NOBRE COM INICIAIS EMS)
+   -------------------------------------------------------------------------- */
+#hero-cover {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background-color: #F8F5F0;
+  background-image: 
+    radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.95) 0%, transparent 70%),
+    radial-gradient(circle at 80% 80%, rgba(232, 216, 190, 0.25) 0%, transparent 60%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.85s ease, transform 0.85s ease;
+  overflow: hidden;
+}
+
+#hero-cover.cover-opened {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.04) translateY(-18px);
+  pointer-events: none;
+}
+
+.envelope-white-stage {
+  perspective: 1200px;
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  justify-content: center;
+}
+
+.envelope-white-card {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 9/15.5;
+  background: #FFFFFF;
+  border-radius: 20px;
+  box-shadow: 
+    0 25px 65px -15px rgba(185, 154, 104, 0.3),
+    0 10px 25px -5px rgba(37, 33, 36, 0.08),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  overflow: hidden;
+  touch-action: manipulation;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.envelope-white-card:hover {
+  transform: translateY(-4px) scale(1.015);
+  box-shadow: 0 35px 80px -15px rgba(185, 154, 104, 0.42);
+}
+
+.envelope-white-card:active {
+  transform: translateY(0) scale(0.99);
+}
+
+.envelope-paper-texture {
+  position: absolute;
+  inset: 0;
+  background: #FFFFFF;
+  background-image: 
+    linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(250, 248, 245, 0.6) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Raminhos Botânicos em Relevo Seco Branco/Creme */
+.embossed-branch {
+  position: absolute;
+  width: 95px;
+  height: 145px;
+  color: #EDE7DE;
+  filter: drop-shadow(1px 1px 1px rgba(185, 154, 104, 0.2)) drop-shadow(-1px -1px 1px #FFFFFF);
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.9;
+}
+
+.branch-top-left { top: 12px; left: 8px; }
+.branch-top-right { top: 12px; right: 8px; }
+.branch-bottom-left { bottom: 25px; left: 10px; width: 75px; height: 110px; }
+.branch-bottom-right { bottom: 25px; right: 10px; width: 75px; height: 110px; }
+
+/* Linhas de Dobra Triangulares do Envelope */
+.envelope-folds-lines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.envelope-crease-lines {
+  width: 100%;
+  height: 100%;
+}
+
+/* Aba Triangular Superior do Envelope */
+.envelope-white-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 52%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: clamp(2.5rem, 8vw, 3.8rem);
+  z-index: 3;
+}
+
+/* Monograma em Relevo Seco com as Iniciais da Graduada: EMS */
+.embossed-monogram {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.mono-letters-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 2px;
+}
+
+.mono-letter {
+  font-family: var(--font-serif);
+  font-size: clamp(3.2rem, 11vw, 4.4rem);
+  font-weight: 500;
+  line-height: 0.95;
+  color: #EDE6DC;
+  text-shadow: 
+    -1px -1px 1px #FFFFFF,
+    1px 1px 2px rgba(185, 154, 104, 0.45),
+    inset 0 1px 2px rgba(0, 0, 0, 0.15);
+  letter-spacing: -0.02em;
+}
+
+.mono-amp {
+  font-family: var(--font-script);
+  font-size: clamp(2.2rem, 7vw, 3rem);
+  color: var(--color-gold);
+  opacity: 0.85;
+  margin: 0 4px;
+  line-height: 0.9;
+  text-shadow: 0 1px 2px rgba(185, 154, 104, 0.3);
+}
+
+.mono-sub {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  color: #9C9488;
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+}
+
+/* Lacre de Cera Realista Verde Botânico / Sálvia */
+.botanical-wax-seal {
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 74px;
+  height: 74px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wax-seal-organic-rim {
+  width: 100%;
+  height: 100%;
+  border-radius: 47% 53% 50% 50% / 52% 48% 52% 48%;
+  background: radial-gradient(circle at 35% 35%, #768A6A 0%, #586B4E 45%, #415239 85%, #2D3926 100%);
+  box-shadow: 
+    0 10px 25px rgba(45, 57, 38, 0.45),
+    inset 0 2px 4px rgba(255, 255, 255, 0.4),
+    inset 0 -3px 5px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.envelope-white-card:hover .wax-seal-organic-rim {
+  transform: scale(1.06);
+}
+
+.wax-seal-face {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #D9E4D2;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5));
+}
+
+.wax-seal-pulse-glow {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(118, 138, 106, 0.4) 0%, transparent 70%);
+  animation: waxGlow 2.5s ease-out infinite;
+  pointer-events: none;
+}
+
+@keyframes waxGlow {
+  0% { transform: scale(0.85); opacity: 0.8; }
+  50% { transform: scale(1.25); opacity: 0.2; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+
+/* Chamada de Ação Curva: CLIQUE AQUI 👆 */
+.wax-seal-callout {
+  position: absolute;
+  top: calc(52% + 50px);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  z-index: 10;
+  user-select: none;
+}
+
+.callout-text {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #7A7268;
+}
+
+.callout-hand {
+  font-size: 0.85rem;
+  animation: handBounce 1.5s ease-in-out infinite;
+}
+
+@keyframes handBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+.envelope-outer.is-opening .envelope-card {
+  transform: translateY(-28px) scale(1.03);
+  box-shadow: 0 16px 36px -4px rgba(185, 154, 104, 0.25);
+  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.85s ease;
+}
+
+/* Cartão do Convite (Inserido dentro do envelope) */
+.envelope-card {
+  position: relative;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-delicate);
+  border-radius: 18px;
+  margin: 1rem 1rem 1.25rem 1rem;
+  padding: clamp(2.4rem, 6vw, 3.5rem) clamp(1.25rem, 5vw, 2.25rem);
+  text-align: center;
+  box-shadow: 0 8px 24px -4px rgba(185, 154, 104, 0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Moldura dupla dourada clássica de convite fino */
+.envelope-card::before {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border: 1px solid var(--border-gold);
+  border-radius: 14px;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.cover-kicker {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-rose-soft);
+  margin-bottom: 1.15rem;
+  line-height: 1.4;
+}
+
+.cover-name {
+  font-family: var(--font-script);
+  font-size: clamp(2.8rem, 8.5vw, 4.2rem);
+  color: var(--text-accent);
+  line-height: 1.15;
+  margin-bottom: 0.9rem;
+  padding: 0 0.5rem;
+  word-break: break-word;
+}
+
+.cover-subtitle {
+  font-family: var(--font-serif);
+  font-size: clamp(1.05rem, 2.6vw, 1.22rem);
+  font-style: italic;
+  color: var(--text-secondary);
+  margin-bottom: 1.4rem;
+  line-height: 1.5;
+}
+
+.cover-date-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--bg-pill);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 0.55rem 1.4rem;
+  border-radius: 9999px;
+  margin-bottom: 2rem;
+  border: 1px solid var(--border-delicate);
+}
+
+/* Botão de Luxo */
+.btn-primary-luxury {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  min-height: 48px;
+  padding: 0.85rem 2.2rem;
+  background: linear-gradient(135deg, var(--color-gold) 0%, #A48452 100%);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 9999px;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(185, 154, 104, 0.35);
+  transition: var(--transition-smooth);
+  touch-action: manipulation;
+}
+
+.btn-primary-luxury:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 9px 24px rgba(185, 154, 104, 0.45);
+}
+
+.btn-primary-luxury:active {
+  transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   6. HEADER DISCRETO (SEM ABAS — APENAS NOME E CONTROLOS RÁPIDOS)
+   -------------------------------------------------------------------------- */
+#main-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: var(--bg-surface-translucent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-subtle);
+  transform: translateY(-100%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#main-nav.nav-visible {
+  transform: translateY(0);
+}
+
+.nav-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0.65rem 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-brand {
+  font-family: var(--font-script);
+  font-size: 1.7rem;
+  color: var(--color-gold);
+  line-height: 1;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.icon-btn-subtle {
+  background: #FFFFFF;
+  border: 1px solid var(--border-delicate);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(185, 154, 104, 0.1);
+  transition: var(--transition-fast);
+}
+
+.icon-btn-subtle:hover {
+  color: var(--color-gold);
+  border-color: var(--color-gold);
+  transform: translateY(-1px);
+}
+
+/* --------------------------------------------------------------------------
+   7. SECÇÃO 02 — MENSAGEM ESPECIAL
+   -------------------------------------------------------------------------- */
+.message-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-delicate);
+  border-radius: 18px;
+  padding: clamp(2rem, 6vw, 3.5rem) clamp(1.25rem, 5vw, 2.5rem);
+  box-shadow: var(--shadow-editorial);
+  position: relative;
+}
+
+.scripture-box {
+  border-left: 2px solid var(--color-gold);
+  padding: 1rem 1.25rem;
+  margin: 0 auto 2.2rem;
+  text-align: left;
+  background-color: var(--bg-pill);
+  border-radius: 0 12px 12px 0;
+  max-width: 540px;
+}
+
+.scripture-ref {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--color-gold);
+  margin-bottom: 0.35rem;
+  text-transform: uppercase;
+}
+
+.scripture-text {
+  font-family: var(--font-serif);
+  font-size: 1.08rem;
+  font-style: italic;
+  line-height: 1.55;
+  color: var(--text-primary);
+}
+
+.message-paragraphs {
+  font-family: var(--font-serif);
+  font-size: clamp(1.1rem, 2.5vw, 1.28rem);
+  line-height: 1.8;
+  color: var(--text-primary);
+  text-align: center;
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+.message-paragraphs p + p {
+  margin-top: 1.35rem;
+}
+
+/* --------------------------------------------------------------------------
+   8. SECÇÃO 03 — DETALHES DO EVENTO & CONTAGEM DECRESCENTE
+   -------------------------------------------------------------------------- */
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2.25rem;
+}
+
+.detail-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-delicate);
+  border-radius: 16px;
+  padding: 1.75rem 1.25rem;
+  text-align: center;
+  box-shadow: var(--shadow-editorial);
+  transition: var(--transition-smooth);
+}
+
+.detail-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-gold);
+}
+
+.detail-icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bg-pill);
+  color: var(--color-gold);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.detail-title {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-rose-soft);
+  margin-bottom: 0.5rem;
+}
+
+.detail-content {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.45;
+}
+
+.detail-subcontent {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-top: 0.4rem;
+  line-height: 1.4;
+}
+
+/* Bloco da Contagem Decrescente */
+.countdown-box {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-gold);
+  border-radius: 18px;
+  padding: 1.75rem 1.25rem;
+  margin: 2.25rem auto 2rem;
+  max-width: 520px;
+  box-shadow: var(--shadow-editorial);
+}
+
+.countdown-kicker {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 1rem;
+}
+
+.countdown-timer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.75rem, 3vw, 1.5rem);
+}
+
+.countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 60px;
+}
+
+.countdown-number {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 6vw, 2.75rem);
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.countdown-label {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-top: 0.35rem;
+}
+
+.countdown-sep {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  color: var(--color-gold);
+  line-height: 1;
+  opacity: 0.6;
+}
+
+/* --------------------------------------------------------------------------
+   9. SECÇÃO 04 — DRESS CODE (EDITORIAL DE MODA)
+   -------------------------------------------------------------------------- */
+.dress-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-delicate);
+  border-radius: 20px;
+  padding: clamp(2rem, 6vw, 3.5rem) clamp(1.25rem, 5vw, 2.5rem);
+  box-shadow: var(--shadow-editorial);
+}
+
+.theme-pill {
+  display: inline-block;
+  padding: 0.45rem 1.6rem;
+  border-radius: 9999px;
+  background-color: var(--bg-pill);
+  border: 1px solid var(--border-gold);
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-accent);
+  margin-bottom: 1.25rem;
+}
+
+.dress-text {
+  font-family: var(--font-serif);
+  font-size: 1.18rem;
+  line-height: 1.65;
+  color: var(--text-primary);
+  max-width: 560px;
+  margin: 0 auto 2rem;
+}
+
+/* Amostras de Cores Proibidas */
+.prohibited-colors-box {
+  background: var(--bg-page);
+  border: 1px dashed var(--border-delicate);
+  border-radius: 16px;
+  padding: 1.5rem 1.25rem;
+  max-width: 440px;
+  margin: 0 auto 2rem;
+}
+
+.prohibited-kicker {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.swatches-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+}
+
+.swatch-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.swatch-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  position: relative;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.swatch-circle.circle-black {
+  background-color: #000000;
+  border: 2px solid #FFFFFF;
+}
+
+.swatch-circle.circle-red {
+  background-color: #D32F2F;
+  border: 2px solid #FFFFFF;
+}
+
+.swatch-circle::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background-color: #FFFFFF;
+  transform: translateY(-50%) rotate(-45deg);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
+
+.swatch-label {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.dress-note {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--text-secondary);
+  margin: 1.5rem auto 2.5rem;
+  max-width: 520px;
+}
+
+/* Molduras de Inspiração */
+.inspiration-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.inspiration-frame {
+  aspect-ratio: 4/5;
+  border-radius: 16px;
+  border: 1px solid var(--border-gold);
+  background: var(--bg-page);
+  padding: 8px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: var(--shadow-editorial);
+}
+
+.inspiration-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.inspiration-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--color-gold);
+}
+
+.inspiration-placeholder-title {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.dress-disclaimer {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  color: var(--color-gray-subtle);
+  max-width: 500px;
+  margin: 1rem auto 0;
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   10. SECÇÃO 05 — MENU DA CELEBRAÇÃO (EXPOSIÇÃO CLARA, ELEGANTE E ABERTA)
+   -------------------------------------------------------------------------- */
+.menu-open-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 620px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.menu-category-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-delicate);
+  border-radius: 16px;
+  padding: 1.5rem 1.6rem;
+  box-shadow: var(--shadow-editorial);
+  transition: var(--transition-smooth);
+  position: relative;
+}
+
+.menu-category-card:hover {
+  border-color: var(--border-gold);
+  transform: translateY(-2px);
+}
+
+.menu-category-card.highlight-category {
+  border: 1px solid rgba(185, 154, 104, 0.45);
+  background: linear-gradient(180deg, #FFFFFF 0%, #FDFBF7 100%);
+}
+
+.menu-category-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-bottom: 0.85rem;
+  margin-bottom: 0.85rem;
+  border-bottom: 1px solid rgba(185, 154, 104, 0.2);
+}
+
+.menu-category-icon {
+  color: var(--color-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--bg-pill);
+}
+
+.menu-category-title {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.menu-items-open-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.menu-items-open-list li {
+  font-family: var(--font-serif);
+  font-size: 1.12rem;
+  color: var(--text-primary);
+  display: flex;
+  align-items: baseline;
+  gap: 0.65rem;
+  line-height: 1.45;
+}
+
+.menu-items-open-list li::before {
+  content: "✦";
+  color: var(--color-rose-soft);
+  font-size: 0.68rem;
+  line-height: 1;
+}
+
+/* Duas colunas em ecrãs maiores para os pratos principais */
+@media (min-width: 520px) {
+  .menu-items-open-list.dishes-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.65rem 1.25rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   11. SECÇÃO 06 — SUGESTÕES DE PRESENTES
+   -------------------------------------------------------------------------- */
+.gifts-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-delicate);
+  border-radius: 20px;
+  padding: clamp(2rem, 6vw, 3.5rem) clamp(1.25rem, 5vw, 2.5rem);
+  box-shadow: var(--shadow-editorial);
+}
+
+.gift-icon-bubble {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: var(--bg-pill);
+  color: var(--color-gold);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.gifts-text {
+  font-family: var(--font-serif);
+  font-size: 1.18rem;
+  line-height: 1.65;
+  color: var(--text-primary);
+  max-width: 540px;
+  margin: 0 auto 2.2rem;
+}
+
+.payment-blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 520px;
+  margin: 0 auto 2.25rem;
+}
+
+.payment-block {
+  background: var(--bg-page);
+  border: 1px solid var(--border-delicate);
+  border-radius: 14px;
+  padding: 1.35rem 1.5rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.payment-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.payment-method-name {
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-rose-soft);
+}
+
+.payment-info-line {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  word-break: break-all;
+}
+
+.payment-info-details {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+.btn-copy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding: 0.6rem 1.25rem;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-gold);
+  border-radius: 8px;
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-accent);
+  cursor: pointer;
+  transition: var(--transition-fast);
+  align-self: flex-start;
+  touch-action: manipulation;
+}
+
+.btn-copy:hover {
+  background-color: var(--color-champagne);
+  color: #1A1618;
+}
+
+.btn-copy.copied {
+  background-color: var(--color-gold);
+  color: #FFFFFF;
+  border-color: var(--color-gold);
+}
+
+.gifts-closing {
+  font-family: var(--font-script);
+  font-size: 2.2rem;
+  color: var(--color-gold);
+  margin-top: 1.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   12. SECÇÃO 07 — CONFIRMAÇÃO DE PRESENÇA (RSVP)
+   -------------------------------------------------------------------------- */
+.rsvp-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-delicate);
+  border-radius: 20px;
+  padding: clamp(2rem, 6vw, 3.5rem) clamp(1.25rem, 5vw, 2.5rem);
+  box-shadow: var(--shadow-editorial);
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+.rsvp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  text-align: left;
+  margin-top: 2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.form-label {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.form-input {
+  width: 100%;
+  min-height: 48px;
+  padding: 0.75rem 1.15rem;
+  background-color: var(--bg-page);
+  border: 1px solid var(--border-delicate);
+  border-radius: 10px;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  transition: var(--transition-fast);
+}
+
+.form-input:focus {
+  border-color: var(--color-gold);
+  background-color: var(--bg-surface);
+  box-shadow: 0 0 0 3px rgba(185, 154, 104, 0.15);
+}
+
+.presence-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;
+}
+
+.presence-label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0.75rem;
+  border: 1px solid var(--border-delicate);
+  border-radius: 10px;
+  background-color: var(--bg-page);
+  cursor: pointer;
+  transition: var(--transition-fast);
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+}
+
+.presence-label input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+}
+
+.presence-label:has(input[type="radio"]:checked) {
+  border-color: var(--color-gold);
+  background-color: var(--bg-pill);
+  color: var(--text-accent);
+}
+
+.btn-rsvp-submit {
+  width: 100%;
+  margin-top: 0.75rem;
+}
+
+.rsvp-feedback {
+  margin-top: 1.25rem;
+  padding: 1rem 1.25rem;
+  border-radius: 10px;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  display: none;
+}
+
+.rsvp-feedback.success {
+  display: block;
+  background-color: rgba(185, 154, 104, 0.12);
+  border: 1px solid var(--color-gold);
+  color: var(--text-accent);
+}
+
+.rsvp-feedback.warning {
+  display: block;
+  background-color: rgba(221, 161, 181, 0.15);
+  border: 1px solid var(--color-rose-soft);
+  color: var(--text-primary);
+}
+
+/* --------------------------------------------------------------------------
+   13. SECÇÃO 08 — ENCERRAMENTO
+   -------------------------------------------------------------------------- */
+.closing-card {
+  padding: clamp(2.5rem, 7vw, 4rem) 1rem 2rem;
+  position: relative;
+}
+
+.closing-verse {
+  font-family: var(--font-serif);
+  font-size: clamp(1.15rem, 3vw, 1.35rem);
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--text-primary);
+  max-width: 580px;
+  margin: 0 auto 1.5rem;
+}
+
+.closing-doxology {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-gold);
+  margin-bottom: 2rem;
+  letter-spacing: 0.04em;
+}
+
+.closing-final-phrase {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-rose-soft);
+  margin-bottom: 1.25rem;
+}
+
+.closing-date {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--text-secondary);
+  margin-bottom: 1.75rem;
+}
+
+.closing-signature {
+  font-family: var(--font-script);
+  font-size: clamp(3rem, 9vw, 4.25rem);
+  color: var(--color-gold);
+  line-height: 1.15;
+  margin-bottom: 2.5rem;
+}
+
+.graduation-illustration {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: var(--color-gold);
+  opacity: 0.9;
+  margin-top: 1.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   14. BOTÕES FLUTUANTES & TOASTS
+   -------------------------------------------------------------------------- */
+.floating-actions {
+  position: fixed;
+  bottom: calc(1.25rem + env(safe-area-inset-bottom));
+  right: 1.25rem;
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.floating-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  border: 1px solid var(--border-delicate);
+  color: var(--color-gold);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-floating);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  touch-action: manipulation;
+}
+
+.floating-btn:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-gold);
+}
+
+#btn-back-to-top {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.8);
+}
+
+#btn-back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+
+#toast-notification {
+  position: fixed;
+  bottom: calc(1.5rem + env(safe-area-inset-bottom));
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  z-index: 99999;
+  background-color: #252124;
+  color: #FFFFFF;
+  padding: 0.75rem 1.4rem;
+  border-radius: 9999px;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#toast-notification.toast-active {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+.config-notice-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  color: var(--color-rose-soft);
+  background: var(--bg-pill);
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  margin-top: 0.35rem;
+}
+
+/* --------------------------------------------------------------------------
+   15. ANIMAÇÕES SUAVES AO SCROLL
+   -------------------------------------------------------------------------- */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  #hero-cover {
+    transition: none !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   16. RESPONSIVIDADE MOBILE FIRST
+   -------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------
+   17. COMPONENTES FOTOGRÁFICOS EDITORIAIS DE LUXO
+   -------------------------------------------------------------------------- */
+.bg-watermark-fixed {
+  position: fixed;
+  right: -5vw;
+  bottom: 5vh;
+  width: 50vw;
+  max-width: 480px;
+  height: 50vw;
+  max-height: 480px;
+  background-image: url('../assets/images/foto-2-celebracao-balao.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  filter: blur(50px);
+  opacity: 0.06;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* --------------------------------------------------------------------------
+   17. COMPONENTES FOTOGRÁFICOS COM EFEITO ESPUMADO / ESFUMADO (SEM MOLDURA)
+   -------------------------------------------------------------------------- */
+.bg-watermark-fixed {
+  position: fixed;
+  right: -5vw;
+  bottom: 5vh;
+  width: 50vw;
+  max-width: 480px;
+  height: 50vw;
+  max-height: 480px;
+  background-image: url('../assets/images/foto-2-celebracao-balao.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  filter: blur(55px);
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Imagem Principal com Efeito Espumado nas Extremidades (Sem Moldura) */
+.feathered-photo-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 340px;
+  margin: 1.5rem auto 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.feathered-photo-main {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  -webkit-mask-image: radial-gradient(ellipse 65% 72% at 50% 48%, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0.75) 62%, rgba(0, 0, 0, 0.25) 82%, transparent 98%);
+  mask-image: radial-gradient(ellipse 65% 72% at 50% 48%, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0.75) 62%, rgba(0, 0, 0, 0.25) 82%, transparent 98%);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+}
+
+.feathered-photo-main:hover {
+  transform: scale(1.02);
+  filter: contrast(1.03) brightness(1.02);
+}
+
+/* Galeria Editorial de Memórias — Disposição Fluida e Fotos Espumadas (Sem Moldura) */
+.memories-feathered-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2.25rem 1.75rem;
+  margin-top: 2.25rem;
+}
+
+.memory-feathered-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0;
+}
+
+.memory-photo-feathered {
+  width: 100%;
+  max-width: 250px;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  object-position: center 25%;
+  display: block;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  -webkit-mask-image: radial-gradient(ellipse 70% 75% at 50% 48%, rgba(0, 0, 0, 1) 45%, rgba(0, 0, 0, 0.8) 65%, rgba(0, 0, 0, 0.2) 85%, transparent 98%);
+  mask-image: radial-gradient(ellipse 70% 75% at 50% 48%, rgba(0, 0, 0, 1) 45%, rgba(0, 0, 0, 0.8) 65%, rgba(0, 0, 0, 0.2) 85%, transparent 98%);
+  transition: transform 0.5s ease;
+}
+
+.memory-feathered-item:hover .memory-photo-feathered {
+  transform: scale(1.03);
+}
+
+.memory-step-pill {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  background-color: var(--bg-pill);
+  padding: 0.25rem 0.85rem;
+  border-radius: 9999px;
+  margin-top: 0.85rem;
+}
+
+.memory-title-clean {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-top: 0.45rem;
+}
+
+.memory-caption-clean {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-top: 0.35rem;
+  max-width: 260px;
+}
+
+/* Foto de Encerramento com Efeito Espumado (Sem Moldura) */
+.closing-photo-feathered {
+  width: 100%;
+  max-width: 260px;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  object-position: center top;
+  margin: 1.5rem auto 1.5rem;
+  display: block;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  -webkit-mask-image: radial-gradient(ellipse 68% 75% at 50% 48%, rgba(0, 0, 0, 1) 42%, rgba(0, 0, 0, 0.75) 64%, rgba(0, 0, 0, 0.2) 84%, transparent 98%);
+  mask-image: radial-gradient(ellipse 68% 75% at 50% 48%, rgba(0, 0, 0, 1) 42%, rgba(0, 0, 0, 0.75) 64%, rgba(0, 0, 0, 0.2) 84%, transparent 98%);
+  transition: transform 0.6s ease;
+}
+
+.closing-photo-feathered:hover {
+  transform: scale(1.02);
+}
+
+/* Indicador de Música Ativa no Cabeçalho */
+.music-playing-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  height: 14px;
+  margin-left: 2px;
+}
+
+.music-bar {
+  width: 2px;
+  height: 100%;
+  background-color: var(--color-gold);
+  border-radius: 2px;
+  animation: soundBars 1s ease-in-out infinite alternate;
+}
+
+.music-bar:nth-child(2) { animation-delay: 0.2s; height: 60%; }
+.music-bar:nth-child(3) { animation-delay: 0.4s; height: 80%; }
+
+@keyframes soundBars {
+  0% { transform: scaleY(0.3); }
+  100% { transform: scaleY(1); }
+}
+
+@media (max-width: 640px) {
+  .countdown-timer {
+    gap: 0.5rem;
+  }
+
+  .countdown-unit {
+    min-width: 48px;
+  }
+
+  .countdown-number {
+    font-size: 1.85rem;
+  }
+
+  .details-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .inspiration-grid {
+    grid-template-columns: 1fr;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

@@ -327,10 +327,12 @@ function initRSVPForm() {
     const nameInput = document.getElementById("rsvp-name");
     const phoneInput = document.getElementById("rsvp-phone");
     const attendanceInput = form.querySelector('input[name="presence"]:checked');
+    const messageInput = document.getElementById("rsvp-message");
 
     const nameVal = nameInput ? nameInput.value.trim() : "";
     const phoneVal = phoneInput ? phoneInput.value.trim() : "";
     const attendanceVal = attendanceInput ? attendanceInput.value : "";
+    const messageVal = messageInput ? messageInput.value.trim() : "";
 
     if (!nameVal || !phoneVal || !attendanceVal) {
       showFeedback(feedbackEl, "Por favor, preencha todos os campos do formulário.", "warning");
@@ -357,10 +359,10 @@ function initRSVPForm() {
       ? "Sim, estarei presente!"
       : "Infelizmente não poderei comparecer.";
 
-    const message = `Olá Edith! Confirmo a minha resposta ao convite para a celebração da sua graduação:
+    const message = `Olá Edith Muthemba! Confirmo a minha resposta ao convite para a celebração da sua graduação:
 • Nome: ${nameVal}
 • Telefone: ${phoneVal}
-• Confirmação: ${statusPhrase}`;
+• Confirmação: ${statusPhrase}${messageVal ? `\n• Mensagem: ${messageVal}` : ""}`;
 
     if (!CFG.whatsapp || CFG.whatsapp.trim() === "") {
       showFeedback(
